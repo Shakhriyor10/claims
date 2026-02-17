@@ -72,6 +72,12 @@ body{
   text-decoration:none;
   color: inherit;
 }
+.brand-mark{display:inline-flex}
+.brand-logo{
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
 .brand-text{display:flex;flex-direction:column;line-height:1.05}
 .brand-name{font-weight:800;letter-spacing:.2px;font-size: 20px}
 .brand-sub{font-size:11px;color: var(--muted);font-weight:600;letter-spacing:.7px}
@@ -187,31 +193,32 @@ body{
   box-shadow: var(--shadow);
   background: #fff;
   position: relative;
+  min-height: 520px;
 }
 
 .hero-bg{
   position:absolute;
   inset:0;
-  /* Background similar to screenshot: road + city haze (SVG pattern) */
+  /* Requested photo background */
   background:
-    radial-gradient(800px 260px at 50% 22%, rgba(255,255,255,.85), rgba(255,255,255,.35) 45%, transparent 70%),
-    linear-gradient(180deg, rgba(160,195,255,.42), rgba(244,247,255,.88) 50%, rgba(255,255,255,1) 100%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='700' viewBox='0 0 1600 700'%3E%3Cdefs%3E%3ClinearGradient id='h' x1='0' x2='0' y1='0' y2='1'%3E%3Cstop offset='0' stop-color='%23cfe4ff'/%3E%3Cstop offset='1' stop-color='%23ffffff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1600' height='700' fill='url(%23h)'/%3E%3Cg opacity='.25'%3E%3Crect x='1080' y='140' width='60' height='220' fill='%239bb7e6'/%3E%3Crect x='1160' y='100' width='90' height='290' fill='%238fb0e6'/%3E%3Crect x='1265' y='160' width='70' height='210' fill='%239bb7e6'/%3E%3Crect x='1360' y='120' width='120' height='280' fill='%238fb0e6'/%3E%3C/g%3E%3Cg opacity='.22'%3E%3Cpath d='M0 560 C 500 430, 1100 430, 1600 560 L1600 700 L0 700 Z' fill='%23b7d4ff'/%3E%3Cpath d='M740 700 C 770 540, 830 540, 860 700 Z' fill='%239cc0ff' opacity='.6'/%3E%3Cpath d='M690 700 C 740 520, 860 520, 910 700 Z' fill='%23ffffff' opacity='.55'/%3E%3C/g%3E%3C/svg%3E");
+    linear-gradient(180deg, rgba(8, 22, 50, .26), rgba(8, 22, 50, .38)),
+    url("../img/back-nav.jpg");
   background-size: cover;
   background-position:center;
-  filter: saturate(1.05);
+  filter: saturate(1.02);
 }
 
 .hero-inner{
   position: relative;
-  padding: 56px 18px 36px;
+  padding: 96px 18px 64px;
   text-align:center;
 }
 
 .hero-kicker{
   margin: 0 0 24px;
-  color: rgba(10,27,61,.78);
+  color: rgba(255,255,255,.95);
   font-weight: 600;
+  text-shadow: 0 8px 24px rgba(6, 15, 36, .5);
 }
 
 .stats{
@@ -336,6 +343,14 @@ body{
 /* FAQs */
 .faqs{
   padding-bottom: 10px;
+  border-radius: var(--radius-xl);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.94)),
+    url("../img/back-footer.jpg");
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(10,27,61,.10);
+  box-shadow: var(--shadow-soft);
 }
 .faq-grid{
   display:grid;
@@ -483,7 +498,11 @@ body{
   overflow:hidden;
   border: 1px solid var(--line);
   box-shadow: var(--shadow-soft);
-  background: rgba(255,255,255,.86);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.94)),
+    url("../img/back-footer.jpg");
+  background-size: cover;
+  background-position: center;
 }
 .footer-inner{
   display:flex;
@@ -492,7 +511,7 @@ body{
   justify-content: space-between;
   align-items:center;
   padding: 14px 16px;
-  background: linear-gradient(180deg, rgba(244,247,255,.9), rgba(255,255,255,.96));
+  background: linear-gradient(180deg, rgba(255,255,255,.50), rgba(255,255,255,.72));
 }
 .footer-inner > div{
   display:flex;
