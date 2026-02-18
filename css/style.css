@@ -187,11 +187,10 @@ body{
 /* Hero */
 .hero{
   margin-top: 18px;
-  border-radius: var(--radius-xl);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   overflow:hidden;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
-  background: #fff;
   position: relative;
   min-height: 520px;
 }
