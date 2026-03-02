@@ -493,14 +493,16 @@ body{
 
 /* Footer like screenshot bottom strip */
 .footer{
-  margin-top: 12px;
-  border-radius: var(--radius-xl);
+  margin-top: 18px;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   overflow:hidden;
-  border: 1px solid var(--line);
+  border: 0;
   box-shadow: var(--shadow-soft);
-  /* background:
-    linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.94)),
-    url("../img/back-footer.jpg"); */
+  background:
+    linear-gradient(180deg, rgba(8,22,50,.82), rgba(8,22,50,.88)),
+    url("../img/back-nav.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -511,24 +513,40 @@ body{
   justify-content: space-between;
   align-items:center;
   padding: 14px 16px;
-  background: linear-gradient(180deg, rgba(255,255,255,.50), rgba(255,255,255,.72));
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.12));
 }
 .footer-inner > div{
   display:flex;
   align-items:center;
   gap: 10px;
   font-weight: 800;
-  color: rgba(10,27,61,.70);
+  color: rgba(255,255,255,.92);
 }
-.footer a{color: var(--primary); text-decoration:none; font-weight: 900}
+.footer a{color: #dce9ff; text-decoration:none; font-weight: 900}
 .footer a:hover{text-decoration: underline}
 .mini-ico{opacity:.85}
 .footer-bottom{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   padding: 10px 16px;
-  border-top: 1px solid rgba(10,27,61,.08);
-  color: rgba(10,27,61,.55);
+  border-top: 1px solid rgba(255,255,255,.2);
+  color: rgba(255,255,255,.78);
   font-weight: 700;
   font-size: 12px;
+}
+
+.footer-links{
+  display: flex;
+  gap: 14px;
+}
+
+.footer-links a{
+  padding: 6px 10px;
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
 }
 
 /* Responsive */
@@ -545,7 +563,7 @@ body{
   .burger{display:inline-block}
   .drawer{display:none}
   body.nav-open .drawer{display:grid}
-  .btn-primary{display:none}
+  .topbar .btn-primary{display:none}
   body.nav-open .topbar{border-bottom-left-radius: 18px; border-bottom-right-radius: 18px;}
 }
 
@@ -553,4 +571,5 @@ body{
   .hero-inner{padding: 44px 14px 28px}
   .stat{min-width: 100%}
   .section h2{font-size: 30px}
+  .footer-bottom{flex-direction: column; align-items:flex-start}
 }
