@@ -503,30 +503,39 @@ body{
   background-position: center;
 }
 .footer-inner{
-  display:flex;
-  flex-wrap: wrap;
-  gap: 14px;
+  display: flex;
   justify-content: space-between;
-  align-items:center;
+  align-items: flex-start;
+  gap: 26px;
   width: min(100%, var(--container));
   margin: 0 auto;
-  padding: 54px 26px 40px;
-  background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.14));
+  padding: 52px 26px 30px;
 }
-.footer-inner > div{
-  display:flex;
-  align-items:center;
-  gap: 10px;
-  font-weight: 800;
-  color: rgba(255,255,255,.96);
-  padding: 8px 2px;
-  border-radius: 0;
-  background: transparent;
-  border: 0;
+
+.footer-brand strong{
+  display: block;
+  color: #ffffff;
+  font-size: 26px;
+  letter-spacing: .2px;
 }
+
+.footer-brand p{
+  margin: 10px 0 0;
+  color: rgba(233,240,255,.86);
+  max-width: 420px;
+  line-height: 1.55;
+  font-weight: 500;
+}
+
+.footer-contact{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-end;
+}
+ 
 .footer a{color: #e8f1ff; text-decoration:none; font-weight: 900}
 .footer a:hover{text-decoration: underline}
-.mini-ico{opacity:.92}
 .footer-bottom{
   display: flex;
   align-items: center;
@@ -534,11 +543,11 @@ body{
   gap: 14px;
   width: min(100%, var(--container));
   margin: 0 auto;
-  padding: 24px 26px 36px;
+  padding: 16px 26px 34px;
   border-top: 1px solid rgba(255,255,255,.24);
   color: rgba(255,255,255,.84);
-  font-weight: 700;
-  font-size: 13px;
+  font-weight: 600;
+  font-size: 12px;
 }
 
 .footer-links{
@@ -548,10 +557,12 @@ body{
 }
 
 .footer-links a{
-  padding: 7px 12px;
-  border: 1px solid rgba(255,255,255,.3);
-  border-radius: 999px;
-  background: rgba(255,255,255,.12);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-weight: 700;
+  color: rgba(232,241,255,.92);
 }
 
 /* Responsive */
@@ -576,6 +587,7 @@ body{
   .hero-inner{padding: 44px 14px 28px}
   .stat{min-width: 100%}
   .section h2{font-size: 30px}
-  .footer-inner{padding: 36px 14px 28px}
-  .footer-bottom{flex-direction: column; align-items:flex-start; padding: 18px 14px 28px}
+  .footer-inner{padding: 38px 14px 24px; gap: 16px; flex-direction: column}
+  .footer-contact{align-items: flex-start}
+  .footer-bottom{flex-direction: column; align-items:flex-start; padding: 16px 14px 24px}
 }
