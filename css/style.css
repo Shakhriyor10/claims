@@ -508,6 +508,8 @@ body{
   gap: 14px;
   justify-content: space-between;
   align-items:center;
+  width: min(100%, var(--container));
+  margin: 0 auto;
   padding: 24px 26px 20px;
   background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.14));
 }
@@ -530,6 +532,8 @@ body{
   align-items: center;
   justify-content: space-between;
   gap: 14px;
+  width: min(100%, var(--container));
+  margin: 0 auto;
   padding: 14px 26px 20px;
   border-top: 1px solid rgba(255,255,255,.24);
   color: rgba(255,255,255,.84);
