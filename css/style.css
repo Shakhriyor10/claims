@@ -510,7 +510,7 @@ body{
   align-items:center;
   width: min(100%, var(--container));
   margin: 0 auto;
-  padding: 38px 26px 30px;
+  padding: 54px 26px 40px;
   background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.14));
 }
 .footer-inner > div{
@@ -519,10 +519,10 @@ body{
   gap: 10px;
   font-weight: 800;
   color: rgba(255,255,255,.96);
-  padding: 14px 16px;
-  border-radius: 12px;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.12);
+  padding: 8px 2px;
+  border-radius: 0;
+  background: transparent;
+  border: 0;
 }
 .footer a{color: #e8f1ff; text-decoration:none; font-weight: 900}
 .footer a:hover{text-decoration: underline}
@@ -534,7 +534,7 @@ body{
   gap: 14px;
   width: min(100%, var(--container));
   margin: 0 auto;
-  padding: 18px 26px 30px;
+  padding: 24px 26px 36px;
   border-top: 1px solid rgba(255,255,255,.24);
   color: rgba(255,255,255,.84);
   font-weight: 700;
@@ -576,6 +576,6 @@ body{
   .hero-inner{padding: 44px 14px 28px}
   .stat{min-width: 100%}
   .section h2{font-size: 30px}
-  .footer-inner{padding: 26px 14px 20px}
-  .footer-bottom{flex-direction: column; align-items:flex-start; padding: 14px 14px 22px}
+  .footer-inner{padding: 36px 14px 28px}
+  .footer-bottom{flex-direction: column; align-items:flex-start; padding: 18px 14px 28px}
 }
