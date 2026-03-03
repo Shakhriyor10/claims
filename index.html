@@ -59,7 +59,7 @@
 
           <div class="stats">
             <div class="stat">
-              <div class="stat-num">14</div>
+              <div class="stat-num" data-counter="14" data-prefix="" data-suffix="">14</div>
               <div class="stat-label">
                 <b>COMPANIES</b><br />
                 <span>Already Trust Us</span>
@@ -67,14 +67,14 @@
             </div>
 
             <div class="stat stat-center">
-              <div class="stat-num">$2.3 million</div>
+              <div class="stat-num" data-counter="2.3" data-prefix="$" data-suffix=" million" data-decimals="1">$2.3 million</div>
               <div class="stat-label">
                 <b>SAVED</b>
               </div>
             </div>
 
             <div class="stat">
-              <div class="stat-num">Over 300+</div>
+              <div class="stat-num" data-counter="300" data-prefix="Over " data-suffix="+">Over 300+</div>
               <div class="stat-label">
                 <span>resolved cases</span>
               </div>
@@ -266,6 +266,51 @@
   <script>
     // year only
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    const counters = document.querySelectorAll('.stat-num[data-counter]');
+
+    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+    const animateCounter = (counter) => {
+      if (counter.dataset.animated === 'true') return;
+      counter.dataset.animated = 'true';
+
+      const endValue = Number(counter.dataset.counter || '0');
+      const prefix = counter.dataset.prefix || '';
+      const suffix = counter.dataset.suffix || '';
+      const decimals = Number(counter.dataset.decimals || '0');
+      const duration = 1500;
+      const startTime = performance.now();
+
+      const tick = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = easeOutCubic(progress);
+        const currentValue = endValue * eased;
+
+        const formattedValue = decimals > 0
+          ? currentValue.toFixed(decimals)
+          : Math.round(currentValue).toString();
+
+        counter.textContent = `${prefix}${formattedValue}${suffix}`;
+
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        }
+      };
+
+      requestAnimationFrame(tick);
+    };
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        animateCounter(entry.target);
+        obs.unobserve(entry.target);
+      });
+    }, { threshold: 0.45 });
+
+    counters.forEach((counter) => observer.observe(counter));
   </script>
 </body>
 </html>
