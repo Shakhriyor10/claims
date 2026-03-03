@@ -59,7 +59,14 @@
 
           <div class="stats">
             <div class="stat">
-              <div class="stat-num">14</div>
+              <div
+                class="stat-num"
+                data-counter
+                data-prefix=""
+                data-suffix=""
+                data-decimals="0"
+                data-target="14"
+              >14</div>
               <div class="stat-label">
                 <b>COMPANIES</b><br />
                 <span>Already Trust Us</span>
@@ -67,14 +74,28 @@
             </div>
 
             <div class="stat stat-center">
-              <div class="stat-num">$2.3 million</div>
+              <div
+                class="stat-num"
+                data-counter
+                data-prefix="$"
+                data-suffix=" million"
+                data-decimals="1"
+                data-target="2.3"
+              >$2.3 million</div>
               <div class="stat-label">
                 <b>SAVED</b>
               </div>
             </div>
 
             <div class="stat">
-              <div class="stat-num">Over 300+</div>
+              <div
+                class="stat-num"
+                data-counter
+                data-prefix="Over "
+                data-suffix="+"
+                data-decimals="0"
+                data-target="300"
+              >Over 300+</div>
               <div class="stat-label">
                 <span>resolved cases</span>
               </div>
@@ -255,6 +276,71 @@
   <script>
     // year only
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    const formatCounterValue = (value, decimals) =>
+      new Intl.NumberFormat('en-US', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+      }).format(value);
+
+    const animateCounter = (el) => {
+      if (el.dataset.animated === 'true') return;
+
+      const target = Number(el.dataset.target || 0);
+      const decimals = Number(el.dataset.decimals || 0);
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      const duration = 1600;
+      const start = performance.now();
+
+      const render = (value) => {
+        el.textContent = `${prefix}${formatCounterValue(value, decimals)}${suffix}`;
+      };
+
+      const step = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = target * eased;
+
+        render(progress < 1 ? current : target);
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          el.dataset.animated = 'true';
+        }
+      };
+
+      requestAnimationFrame(step);
+    };
+
+    const counters = document.querySelectorAll('[data-counter]');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      counters.forEach((el) => {
+        const decimals = Number(el.dataset.decimals || 0);
+        const target = Number(el.dataset.target || 0);
+        const prefix = el.dataset.prefix || '';
+        const suffix = el.dataset.suffix || '';
+        el.textContent = `${prefix}${formatCounterValue(target, decimals)}${suffix}`;
+        el.dataset.animated = 'true';
+      });
+    } else {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateCounter(entry.target);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      counters.forEach((counter) => observer.observe(counter));
+    }
   </script>
 </body>
 </html>
